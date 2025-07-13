@@ -1,1 +1,4 @@
-
+INSTALLED_APPS = [
+    ...
+    'bookshelf',
+]
