@@ -17,18 +17,15 @@ library1.books.set([book1, book2])  # Add books to library
 librarian1 = Librarian.objects.create(name="John Doe", library=library1)
 
 
-# ✅ 1. Query all books by a specific author
-books_by_achebe = Book.objects.filter(author__name="Chinua Achebe")
-print("Books by Chinua Achebe:")
-for book in books_by_achebe:
-    print(f"- {book.title}")
+print("Books by Wole Soyinka:")
+for book in Book.objects.filter(author__name="Wole Soyinka"):
+    print(book.title)
 
-# ✅ 2. List all books in a library
-books_in_library = library1.books.all()
-print(f"\nBooks in {library1.name}:")
-for book in books_in_library:
-    print(f"- {book.title}")
+# 2. List all books in a library
+print("\nBooks in Central Library:")
+for book in library.books.all():
+    print(book.title)
 
-# ✅ 3. Retrieve the librarian for a library
-librarian = library1.librarian
-print(f"\nLibrarian at {library1.name}: {librarian.name}")
+# 3. Retrieve the librarian for a library
+print("\nLibrarian of Central Library:")
+print(library.librarian.name)
