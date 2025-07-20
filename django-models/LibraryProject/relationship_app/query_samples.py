@@ -1,22 +1,25 @@
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_models.settings')
+# Setup
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LibraryProject.settings')
 django.setup()
 
 from relationship_app.models import Author, Book, Library, Librarian
 
-# Sample Data Creation
-author1 = Author.objects.create(name="Chinua Achebe")
-book1 = Book.objects.create(title="Things Fall Apart", author=author1)
-book2 = Book.objects.create(title="No Longer at Ease", author=author1)
+# --- Create Sample Data (optional if using shell instead) ---
+author = Author.objects.create(name="Wole Soyinka")
+book1 = Book.objects.create(title="The Lion and the Jewel", author=author)
+book2 = Book.objects.create(title="Death and the King's Horseman", author=author)
 
-library1 = Library.objects.create(name="National Library")
-library1.books.set([book1, book2])  # Add books to library
+library = Library.objects.create(name="Central Library")
+library.books.add(book1, book2)
 
-librarian1 = Librarian.objects.create(name="John Doe", library=library1)
+librarian = Librarian.objects.create(name="Grace", library=library)
 
+# --- Queries ---
 
+# 1. Query all books by a specific author
 print("Books by Wole Soyinka:")
 for book in Book.objects.filter(author__name="Wole Soyinka"):
     print(book.title)
