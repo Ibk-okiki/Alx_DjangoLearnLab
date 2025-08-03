@@ -46,7 +46,8 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
-    class Meta:
+        
+    class Book(models.Model):
         permissions = [
             ("can_view", "Can view book"),
             ("can_create", "Can create book"),
