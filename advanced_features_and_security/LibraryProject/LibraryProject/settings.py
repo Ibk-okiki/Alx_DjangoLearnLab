@@ -42,4 +42,25 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 # Enable browser XSS filter
 SECURE_BROWSER_XSS_FILTER = True
 
+# Enforce HTTPS and Secure Redirects
+SECURE_SSL_REDIRECT = True  # Redirect all non-HTTPS requests to HTTPS
+
+# Set HSTS headers to enforce HTTPS in browser
+SECURE_HSTS_SECONDS = 31536000  # One year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Secure cookies
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+# Secure headers
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+
+# Trust the X-Forwarded-Proto header set by your proxy (e.g., Heroku, Nginx)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
 
