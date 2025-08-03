@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import permission_required
 from .models import Book
 from django.db.models import Q
 from django import forms
+from .forms import ExampleForm
 
 @permission_required('bookshelf.can_view', raise_exception=True)
 def book_list(request):
@@ -46,3 +47,13 @@ def book_search(request):
         query = form.cleaned_data['query']
         results = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
     return render(request, 'bookshelf/book_list.html', {'form': form, 'results': results})
+
+def example_form_view(request):
+    if request.method == 'POST':
+        form = ExampleForm(request.POST)
+        if form.is_valid():
+            # Handle cleaned_data here
+            return render(request, 'bookshelf/success.html')
+    else:
+        form = ExampleForm()
+    return render(request, 'bookshelf/form_example.html', {'form': form})
