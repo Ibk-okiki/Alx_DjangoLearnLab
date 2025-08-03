@@ -17,3 +17,29 @@ SESSION_COOKIE_SECURE = True
 SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
+# --- HTTPS Redirects and Security ---
+# Redirect all HTTP requests to HTTPS
+SECURE_SSL_REDIRECT = True
+
+# HTTP Strict Transport Security (HSTS)
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# --- Secure Cookies ---
+# Ensures cookies are only sent via HTTPS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+
+# --- Secure Headers ---
+# Prevent clickjacking
+X_FRAME_OPTIONS = 'DENY'
+
+# Prevent content type sniffing
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Enable browser XSS filter
+SECURE_BROWSER_XSS_FILTER = True
+
+
