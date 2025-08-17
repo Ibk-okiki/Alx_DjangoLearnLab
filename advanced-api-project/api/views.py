@@ -13,7 +13,7 @@ class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
 
 class BookListCreateView(generics.ListCreateAPIView):
-    queryset = Book.objects.select_related("author").all()
+    queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
