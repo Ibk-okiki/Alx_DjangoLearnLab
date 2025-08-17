@@ -24,7 +24,7 @@ from api.views import AuthorViewSet, BookViewSet
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include(router.urls)),
-    
+    path("api/", include("api.urls")),
 
 
 
