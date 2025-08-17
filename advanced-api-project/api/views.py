@@ -34,6 +34,20 @@ class BookRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.select_related("author").all()
     serializer_class = BookSerializer
 
+class ListView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+# DRF UpdateView
+class UpdateView(generics.UpdateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+# DRF DeleteView
+class DeleteView(generics.DestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
     def get_permissions(self):
         if self.request.method in ["PUT", "PATCH", "DELETE"]:
             return [permissions.IsAuthenticated()]
